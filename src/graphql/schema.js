@@ -11,6 +11,8 @@ const schema = buildSchema(`
         history: Date
         examination: Date
         prescription: Date
+        scheduled: Boolean
+        waiting: Date
     }
     type doctorTime{
         _id: String
@@ -22,6 +24,8 @@ const schema = buildSchema(`
         history: Date
         examination: Date
         prescription: Date
+        scheduled: Boolean
+        waiting: Date
     } 
 
     type Query {

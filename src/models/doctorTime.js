@@ -36,7 +36,9 @@ const doctorTimeSchema = new Schema({
     endTime: Date,
     history: { type: Date, default: null },
     examination: { type: Date, default: null },
-    prescription: { type: Date, defualt: null }
+    prescription: { type: Date, defualt: null },
+    scheduled: Boolean,
+    waiting: { type: Date, default: null }
 });
 
 const doctorTime = mongoose.model('doctorTime', doctorTimeSchema);

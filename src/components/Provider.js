@@ -9,7 +9,7 @@ const initialState = {
 }
 
 const reducer = (state, action) =>{
-    console.log( action.type, action.payload )
+    console.log( `%c${action.type}, %c${action.payload}`, 'color: green', 'color: yellow')
     switch(action.type){
         case "SET_EMAIL":
             return { ...state, email: action.payload }

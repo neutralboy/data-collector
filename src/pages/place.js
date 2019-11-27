@@ -32,7 +32,7 @@ const Place = () =>{
     }
     const handleSelect = (a) =>{
         dispatch({ type:"SET_PLACE", payload: a })
-        const href = "/type"
+        const href = "/start-measuring"
         const as = href 
         Router.push(href, as, { shallow: true })
     }
@@ -50,7 +50,9 @@ const Place = () =>{
             </div>
 
             <div className={`${styles.list}`}>
-                { placeList.map((i)=> <a onClick={()=>handleSelect(i)} className={styles['list-item']} key={Math.random()}>{i}</a> ) }
+                {
+                     placeList.map((i)=> <a onClick={()=>handleSelect(i)} className={styles['list-item']} key={Math.random()}>{i}</a> )
+                }
             </div>
 
 

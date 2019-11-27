@@ -9,8 +9,8 @@ const root = {
             email: input.email,
             place: input.place,
             department: input.department,
-            startTime: input.startTime,
-            endTime: input.endTime
+            time: input.time,
+            totalPeople: input.totalPeople
         })
         await newdoc.save()
         return newdoc

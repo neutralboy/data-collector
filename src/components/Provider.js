@@ -18,8 +18,6 @@ const reducer = (state, action) =>{
             return { ...state, email: action.payload }
         case "SET_PLACE":
             return { ...state, place: action.payload }
-        case "SET_TYPE":
-            return { ...state, type: action.payload }
         case "SET_DEPARTMENT":
             return { ...state, department: action.payload }
         default:

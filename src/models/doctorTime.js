@@ -32,13 +32,8 @@ const doctorTimeSchema = new Schema({
     email: String,
     place: String,
     department: String,
-    startTime: Date,
-    endTime: Date,
-    history: { type: Date, default: null },
-    examination: { type: Date, default: null },
-    prescription: { type: Date, defualt: null },
-    scheduled: Boolean,
-    waiting: { type: Date, default: null }
+    time: Date,
+    totalPeople: Number
 });
 
 const doctorTime = mongoose.model('doctorTime', doctorTimeSchema);

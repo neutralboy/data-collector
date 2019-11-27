@@ -26,13 +26,13 @@ const Place = () =>{
         newArr.push(place)
         storeToLocal('place', JSON.stringify(newArr))
         dispatch({ type:"SET_PLACE", payload:place })
-        const href = "/type"
+        const href = "/department"
         const as = href 
         Router.push(href, as, { shallow: true })
     }
     const handleSelect = (a) =>{
         dispatch({ type:"SET_PLACE", payload: a })
-        const href = "/start-measuring"
+        const href = "/department"
         const as = href 
         Router.push(href, as, { shallow: true })
     }

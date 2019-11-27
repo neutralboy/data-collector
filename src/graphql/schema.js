@@ -6,26 +6,16 @@ const schema = buildSchema(`
         email: String
         place: String
         department: String
-        startTime: Date
-        endTime: Date
-        history: Date
-        examination: Date
-        prescription: Date
-        scheduled: Boolean
-        waiting: Date
+        time: Date
+        totalPeople: Int
     }
     type doctorTime{
         _id: String
         email: String
         place: String
         department: String
-        startTime: Date
-        endTime: Date
-        history: Date
-        examination: Date
-        prescription: Date
-        scheduled: Boolean
-        waiting: Date
+        time: Date
+        totalPeople: Int
     } 
 
     type Query {

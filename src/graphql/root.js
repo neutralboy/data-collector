@@ -5,6 +5,7 @@ const root = {
     labDepartments: () => labDepartments,
     doctorTimes: async () => await doctorTime.find(),
     setDoctorTime: async ({ input }) =>{
+        console.log({ ...input })
         let newdoc = new doctorTime({
             email: input.email,
             place: input.place,

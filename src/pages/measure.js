@@ -1,24 +1,35 @@
 import React, {useState, useContext} from 'react';
 import { useMutation } from '@apollo/react-hooks';
+import gql from 'graphql-tag';
 
 import {MainContext} from './../components/Provider';
 import styles from './index.module.scss';
 
+
+const INCREMENT = gql`
+mutation SetDoctorTime($email: String, $place: String, $department: String, $time: Date, $totalPeople: Int) {
+    setDoctorTime(input:{ email: $email, place: $place, department: $department, time: $time, totalPeople: $totalPeople }) {
+      _id
+    }
+  }
+`;
+
 const Measure = () =>{
     const {state, dispatch} = useContext(MainContext)
-    const [status, setStatus] = useState("none")
+    const [
+        updateTodo,
+        { loading: mutationLoading, error: mutationError }
+      ] = useMutation(INCREMENT)
+    const handleIncrement = () =>{
+        updateTodo({ variables: { email: state.email, place: state.place, department: state.department, time:new Date(), totalPeople: 1 } })
+      }
     return (
         <>
         <section className={styles.section}>
             <div className={styles.container}>
                 <div>
                     {
-                        status == "success" && <div className={` ${styles.notification} ${styles['is-primary']} `}>
-                        Success
-                    </div>
-                    }
-                    {
-                        status == "failure" && <div className={` ${styles.notification} ${styles['is-danger']} `}>
+                        mutationError && <div className={` ${styles.notification} ${styles['is-danger']} `}>
                         Network failure
                     </div>
                     }
@@ -58,7 +69,7 @@ const Measure = () =>{
         </section>
         <section className={styles.section}>
             <div className={styles.container}>
-                <a className={` ${styles.button} ${styles['is-large']} ${styles['is-fullwidth']} ${styles['is-success']} `}>INCREMENT</a>
+                <a onClick={handleIncrement} className={` ${styles.button} ${ mutationLoading && styles['is-loading'] } ${styles['is-large']} ${styles['is-fullwidth']} ${styles['is-success']} `}>INCREMENT</a>
             </div>
         </section>
         </>

@@ -11,8 +11,6 @@ const Place = () =>{
         setPlace(e.target.value)
     }
     const handleSubmit = () =>{
-        let newArr = placeList
-        newArr.push(place)
         dispatch({ type:"SET_PLACE", payload:place })
         const href = "/department"
         const as = href 

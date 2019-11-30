@@ -13,7 +13,7 @@ const root = {
             time: input.time,
             totalPeople: input.totalPeople
         })
-        await newdoc.save()
+        await newdoc.save({}, (err)=>console.log(err))
         return newdoc
     }
 };

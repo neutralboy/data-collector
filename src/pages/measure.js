@@ -32,8 +32,7 @@ const Measure = () =>{
                 <div>
                     {
                         success && <div className={` ${styles.notification} ${styles['is-success']} `}>
-                        Success
-                         <span className={styles['is-family-code']}>{successId}</span>
+                         <span className={`${styles['is-family-code']} ${styles['has-background-light']} `}>{successId}</span>
                     </div>
                     }
                     {

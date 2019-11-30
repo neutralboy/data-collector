@@ -2,7 +2,6 @@ import React, {useState, useContext} from 'react';
 import Router from 'next/router'
 
 import {MainContext} from './../components/Provider';
-import { storeToLocal } from './../data';
 import styles from './index.module.scss';
 
 const IndexPage = () => {
@@ -12,7 +11,6 @@ const IndexPage = () => {
         setEmail(e.target.value)
     }
     const handleSubmit = () =>{
-        storeToLocal('email', email)
         dispatch({ type:"SET_EMAIL", payload: email })
         const href = "/place"
         const as = href 

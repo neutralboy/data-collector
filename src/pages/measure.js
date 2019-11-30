@@ -15,19 +15,27 @@ mutation SetDoctorTime($email: String, $place: String, $department: String, $tim
 `;
 
 const Measure = () =>{
+    const [people, setPeople] = useState(0)
+    const [successId, setSuccessId] = useState("")
+    const [success, setSuccess] = useState(false)
     const {state, dispatch} = useContext(MainContext)
-    const [
-        updateTodo,
-        { loading: mutationLoading, error: mutationError }
-      ] = useMutation(INCREMENT)
+    const [updateTodo, { loading: mutationLoading, error: mutationError }] = useMutation(INCREMENT)
     const handleIncrement = () =>{
-        updateTodo({ variables: { email: state.email, place: state.place, department: state.department, time:new Date(), totalPeople: 1 } })
+        updateTodo({ variables: { email: state.email, place: state.place, department: state.department, time:new Date(), totalPeople: people } }).then((r)=>setSuccessId(r.data.setDoctorTime._id))
+        setPeople(0)
+        setSuccess(true)
       }
     return (
         <>
         <section className={styles.section}>
             <div className={styles.container}>
                 <div>
+                    {
+                        success && <div className={` ${styles.notification} ${styles['is-success']} `}>
+                        Success
+                         <span className={styles['is-family-code']}>{successId}</span>
+                    </div>
+                    }
                     {
                         mutationError && <div className={` ${styles.notification} ${styles['is-danger']} `}>
                         Network failure
@@ -44,22 +52,22 @@ const Measure = () =>{
                     </div>
                     <div className={` ${styles.field} ${styles['is-grouped']} `}>
                         <p className={styles.control}>
-                            <button className={`${styles.button} ${styles['is-large']} `}>
+                            <button onClick={ ()=>setPeople(1) } className={`${styles.button} ${ people == 1 && styles['is-focused'] } ${styles['is-large']} `}>
                                 1
                             </button>
                         </p>
                         <p className={styles.control}>
-                            <button className={`${styles.button} ${styles['is-large']} `}>
+                            <button onClick={ ()=>setPeople(2) } className={`${styles.button} ${ people == 2 && styles['is-focused'] } ${styles['is-large']} `}>
                                 2
                             </button>
                         </p>
                         <p className={styles.control}>
-                            <button className={`${styles.button} ${styles['is-large']} `}>
+                            <button onClick={ ()=>setPeople(3) } className={`${styles.button} ${ people == 3 && styles['is-focused'] } ${styles['is-large']} `}>
                                 3
                             </button>
                         </p>
                         <p className={styles.control}>
-                            <button className={`${styles.button} ${styles['is-large']} `}>
+                            <button onClick={ ()=>setPeople(4) } className={`${styles.button} ${ people == 4 && styles['is-focused'] } ${styles['is-large']} `}>
                                 4+
                             </button>
                         </p>

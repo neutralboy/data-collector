@@ -6,8 +6,7 @@ const MainContext = React.createContext();
 const initialState = {
     email: "",
     place: "",
-    department: "",
-    type: ""
+    department: ""
 }
 
 const reducer = (state, action) =>{
